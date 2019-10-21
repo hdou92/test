@@ -20,8 +20,8 @@
             <!--<PatternLayout charset="UTF-8" pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level} [%t] %highlight{%c{1.}.%M(%L)}: %msg%n"/>-->
             <PatternLayout charset="UTF-8" pattern="${sys:CONSOLE_LOG_PATTERN}"/>
         </console>
-        <RollingFile name="RollingFileDebug" fileName="/usr/log/debug/debug.log"
-                     filePattern="/usr/log/debug/bak/debug-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="RollingFileDebug" fileName="/Users/houdu/usr/log/debug/debug.log"
+                     filePattern="/Users/houdu/usr/log/debug/bak/debug-%d{yyyy-MM-dd}-%i.log">
             <!--只输出debug类型的日志-->
             <Filters>
                 <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
@@ -35,7 +35,7 @@
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件 -->
             <DefaultRolloverStrategy max="10">
                 <!--<Delete basePath="/usr/running-log/logistics/monitor-server/debug/$${date:yyyy-MM}" maxDepth="2">-->
-                <Delete basePath="/usr/log/debug/bak" maxDepth="1">
+                <Delete basePath="/Users/houdu/usr/log/debug/bak" maxDepth="1">
                     <IfFileName glob="*.log"/>
                     <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
                     另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
@@ -46,8 +46,8 @@
             </DefaultRolloverStrategy>
         </RollingFile>
         <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
-        <RollingFile name="RollingFileInfo" fileName="/usr/log/info/info.log"
-                     filePattern="/usr/log/info/bak/info-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="RollingFileInfo" fileName="/Users/houdu/usr/log/info/info.log"
+                     filePattern="/Users/houdu/usr/log/info/bak/info-%d{yyyy-MM-dd}-%i.log">
             <!--只输出info类型的日志-->
             <Filters>
                 <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
@@ -61,7 +61,7 @@
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件 -->
             <DefaultRolloverStrategy max="10">
                 <!--<Delete basePath="/usr/running-log/logistics/monitor-server/info/$${date:yyyy-MM}" maxDepth="2">-->
-                <Delete basePath="/usr/log/info/bak" maxDepth="1">
+                <Delete basePath="/Users/houdu/usr/log/info/bak" maxDepth="1">
                     <IfFileName glob="*.log"/>
                     <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
                     另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
@@ -71,8 +71,8 @@
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingFile>
-        <RollingFile name="RollingFileWarn" fileName="/usr/log/warn/warn.log"
-                     filePattern="/usr/log/warn/bak/warn-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="RollingFileWarn" fileName="/Users/houdu/usr/log/warn/warn.log"
+                     filePattern="/Users/houdu/usr/log/warn/bak/warn-%d{yyyy-MM-dd}-%i.log">
             <!--只输出warn类型的日志-->
             <Filters>
                 <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
@@ -86,7 +86,7 @@
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件 -->
             <DefaultRolloverStrategy max="20">
                 <!--<Delete basePath="/usr/running-log/logistics/monitor-server/warn/$${date:yyyy-MM}" maxDepth="2">-->
-                <Delete basePath="/usr/log/warn/bak" maxDepth="1">
+                <Delete basePath="/Users/houdu/usr/log/warn/bak" maxDepth="1">
                     <IfFileName glob="*.log"/>
                     <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
                     另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
@@ -96,8 +96,8 @@
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingFile>
-        <RollingFile name="RollingFileError" fileName="/usr/log/error/error.log"
-                     filePattern="/usr/log/error/bak/error-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="RollingFileError" fileName="/Users/houdu/usr/log/error/error.log"
+                     filePattern="/Users/houdu/usr/log/error/bak/error-%d{yyyy-MM-dd}-%i.log">
             <!--输出error及以上的日志-->
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout charset="UTF-8" pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] - %l - %m%n"/>
@@ -108,7 +108,7 @@
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件 -->
             <DefaultRolloverStrategy max="20">
                 <!--<Delete basePath="/usr/running-log/logistics/monitor-server/error/$${date:yyyy-MM}" maxDepth="2">-->
-                <Delete basePath="/usr/log/error/bak" maxDepth="1">
+                <Delete basePath="/Users/houdu/usr/log/error/bak" maxDepth="1">
                     <IfFileName glob="*.log"/>
                     <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
                     另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
