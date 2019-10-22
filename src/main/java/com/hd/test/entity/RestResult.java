@@ -43,7 +43,6 @@ public class RestResult<T> {
 
     @Override
     public String toString() {
-        return "code=" + code + ", message=" + message + ", data class is "
-                + (data != null ? data.getClass().getName() : null);
+        return "code=" + code + ", message=" + message + ", data=" + data.toString();
     }
 }

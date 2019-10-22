@@ -1,7 +1,6 @@
 package com.hd.test.common;
 
 import com.hd.test.entity.OfficeBuilding;
-import org.springframework.util.StringUtils;
 
 public class OfficeBuildingUtils {
 
@@ -20,7 +19,7 @@ public class OfficeBuildingUtils {
      * @return 不能拼接 true
      */
     public static boolean isEmptyOfficeBuildingId(String officeId, String building) {
-        return ZStringUtils.isEmpty(officeId) || ZStringUtils.isEmpty(building);
+        return StringUtils.isEmpty(officeId) || StringUtils.isEmpty(building);
     }
 
     /**
@@ -60,10 +59,10 @@ public class OfficeBuildingUtils {
      * @return
      */
     public static String getOfficeBuildingId(String officeId, String halt) {
-        if (StringUtils.isEmpty(officeId)) {
+        if (org.springframework.util.StringUtils.isEmpty(officeId)) {
             return null;
         }
-        if (StringUtils.isEmpty(halt)) {
+        if (org.springframework.util.StringUtils.isEmpty(halt)) {
             //halt值为空时，返回默认值
             return officeId + DECOLLATOR + DEFAULT_BUILDING_HALT;
         } else {
@@ -83,19 +82,19 @@ public class OfficeBuildingUtils {
      * 是否不为 机构+buildingId
      */
     public static boolean isNotOfficeBuildingId(String building) {
-        return ZStringUtils.isEmpty(building) || building.indexOf(DECOLLATOR) < 0 || building.length() < 32;
+        return StringUtils.isEmpty(building) || building.indexOf(DECOLLATOR) < 0 || building.length() < 32;
     }
 
     /**
      * buildingId to halt（机器人使用的楼宇id）
      */
     public static String buildingToHalt(String buildingId) {
-        if (ZStringUtils.isEmpty(buildingId)) {
+        if (StringUtils.isEmpty(buildingId)) {
             //没有楼宇信息是，默认返回"A";
             return DEFAULT_BUILDING_HALT;
         }
         if (isOfficeBuildingId(buildingId)) {
-            return ZStringUtils.endSplitTwo(buildingId, DECOLLATOR).getVal2();
+            return StringUtils.endSplitTwo(buildingId, DECOLLATOR).getVal2();
         } else {
             return DEFAULT_BUILDING_HALT;
         }

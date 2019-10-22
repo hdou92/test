@@ -1,7 +1,7 @@
 package com.hd.test.service;
 
-import com.hd.test.common.ZCollectionUtils;
-import com.hd.test.common.ZStringUtils;
+import com.hd.test.common.CollectionUtils;
+import com.hd.test.common.StringUtils;
 import com.hd.test.entity.BaseEntity;
 
 import java.lang.reflect.ParameterizedType;
@@ -29,7 +29,7 @@ public class BaseService<T extends BaseEntity> {
 
     public int saveAll(Collection<T> list) {
         int count = 0;
-        if (ZCollectionUtils.isNotEmpty(list)) {
+        if (CollectionUtils.isNotEmpty(list)) {
             for (T v : list) {
                 count++;
                 save(v);
@@ -41,7 +41,7 @@ public class BaseService<T extends BaseEntity> {
     public List<T> getAll(String name) {
         List<T> list = new ArrayList<>();
         for (T t : data.keySet()) {
-            if (ZStringUtils.isEquals(data.get(t), name)) {
+            if (StringUtils.isEquals(data.get(t), name)) {
                 list.add(t);
             }
         }
@@ -64,6 +64,6 @@ public class BaseService<T extends BaseEntity> {
      * @return
      */
     public boolean removeAll() {
-        return data.entrySet().removeIf(a -> ZStringUtils.isEquals(getClazz(),a.getValue()));
+        return data.entrySet().removeIf(a -> StringUtils.isEquals(getClazz(),a.getValue()));
     }
 }

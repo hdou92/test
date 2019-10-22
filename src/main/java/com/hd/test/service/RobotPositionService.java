@@ -1,6 +1,6 @@
 package com.hd.test.service;
 
-import com.hd.test.common.ZStringUtils;
+import com.hd.test.common.StringUtils;
 import com.hd.test.consts.TestConsts;
 import com.hd.test.entity.Office;
 import com.hd.test.entity.OfficeBuilding;
@@ -41,6 +41,6 @@ public class RobotPositionService extends BaseService<TestPosition> {
     }
 
     public List<TestPosition> getAllListByOfficeId(String officeId) {
-        return getData().stream().filter(a -> ZStringUtils.isEquals(officeId, a.getOffice().getId())).collect(Collectors.toList());
+        return getData().stream().filter(a -> StringUtils.isEquals(officeId, a.getOffice().getId())).collect(Collectors.toList());
     }
 }

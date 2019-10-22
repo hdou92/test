@@ -1,6 +1,6 @@
 package com.hd.test.web;
 
-import com.hd.test.common.ZStringUtils;
+import com.hd.test.common.StringUtils;
 import com.hd.test.entity.AutoGenerationVO;
 import com.hd.test.entity.RestResult;
 import com.hd.test.entity.RobotMainPosition;
@@ -45,7 +45,7 @@ public class TestController {
     @RequestMapping("/getMain")
     public List<RobotMainPosition> testGetMain(String officeId) {
         LOGGER.info("get main position! 机构ID：" + officeId);
-        if (ZStringUtils.isNotEmpty(officeId)) {
+        if (StringUtils.isNotEmpty(officeId)) {
             return testManager.getMain(officeId);
         }
         return testManager.getMainAll();
@@ -54,7 +54,7 @@ public class TestController {
     @RequestMapping("/getMapping")
     public List<RobotPositionMapping> testGetMapping(String officeId) {
         LOGGER.info("get mapping position! 机构ID：" + officeId);
-        if (ZStringUtils.isNotEmpty(officeId)) {
+        if (StringUtils.isNotEmpty(officeId)) {
             return testManager.getMapping(officeId);
         }
         return testManager.getMappingAll();

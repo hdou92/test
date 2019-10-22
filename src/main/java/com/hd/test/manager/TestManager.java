@@ -1,8 +1,8 @@
 package com.hd.test.manager;
 
+import com.hd.test.common.CollectionUtils;
 import com.hd.test.common.OfficeBuildingUtils;
-import com.hd.test.common.ZCollectionUtils;
-import com.hd.test.common.ZStringUtils;
+import com.hd.test.common.StringUtils;
 import com.hd.test.consts.TestConsts;
 import com.hd.test.entity.*;
 import com.hd.test.service.RobotMainPositionService;
@@ -65,20 +65,20 @@ public class TestManager {
 //    public RestResult<Integer> addAllMainPosition(AutoGenerationVO vo) {
 //        RestResult result = new RestResult();
 //        // 使用名称 或者全称 1 为全称。 防止没有传参则默认使用 0 也就是名称
-//        boolean isFullName = ZStringUtils.isEquals(vo.getName(), "1");
+//        boolean isFullName = StringUtils.isEquals(vo.getName(), "1");
 //        // 是否传楼宇ID  如果没传则不考虑楼宇
-//        boolean isBuilding = ZStringUtils.isEmpty(vo.getBuildingId());
+//        boolean isBuilding = StringUtils.isEmpty(vo.getBuildingId());
 //        Integer count = 0;
 //        // 获取所有位置
 //        List<TestPosition> positions = robotPositionService.getAllListByOfficeId(vo.getOfficeId());
-//        if (ZCollectionUtils.isEmpty(positions)) {
+//        if (CollectionUtils.isEmpty(positions)) {
 //            result.setData(count);
 //            return result;
 //        }
 //        // 获取所有参数机器人类型的位置
-//        List<TestPosition> collectByRobotModel = positions.stream().filter(a -> ZStringUtils.isEquals(a.getRobotModel(), vo.getRobotModel())).collect(Collectors.toList());
+//        List<TestPosition> collectByRobotModel = positions.stream().filter(a -> StringUtils.isEquals(a.getRobotModel(), vo.getRobotModel())).collect(Collectors.toList());
 //        RobotMainPosition rmp = null;
-//        if (ZCollectionUtils.isNotEmpty(collectByRobotModel)) {
+//        if (CollectionUtils.isNotEmpty(collectByRobotModel)) {
 //            // 添加所有参数类型位置总表
 //            for (TestPosition p : collectByRobotModel) {
 //                if (isExist(p.getOffice(), p.getRobotModel(), p.getGuId())) {
@@ -97,16 +97,16 @@ public class TestManager {
 //            }
 //        }
 //        // 将 list 转换为 map 方便验证位置全名是否已经生成配置
-//        Map<String, TestPosition> maps = ZCollectionUtils.toMap(collectByRobotModel,
+//        Map<String, TestPosition> maps = CollectionUtils.toMap(collectByRobotModel,
 //                a -> isFullName ? a.getFullName() : a.getName(), a -> a, new HashMap<>());
 //        // 遍历所有位置
 //        for (TestPosition p : positions) {
 //            // 如果机器人类型和参数类型一样 则跳过  因为参数类型的位置在上面已经添加了
-//            if (ZStringUtils.isEquals(vo.getRobotModel(), p.getRobotModel())) {
+//            if (StringUtils.isEquals(vo.getRobotModel(), p.getRobotModel())) {
 //                continue;
 //            }
 //            // 如果包含全称或名称则说明已经生成过配置 且 楼宇 = 传参的楼宇 说明该位置对应有总表配置了 则跳过
-//            if (maps.containsKey(isFullName ? p.getFullName() : p.getName()) && (isBuilding || ZStringUtils.isEquals(OfficeBuildingUtils.buildingToHalt(vo.getBuildingId()), OfficeBuildingUtils.buildingToHalt(p.getBuilding().getId())))) {
+//            if (maps.containsKey(isFullName ? p.getFullName() : p.getName()) && (isBuilding || StringUtils.isEquals(OfficeBuildingUtils.buildingToHalt(vo.getBuildingId()), OfficeBuildingUtils.buildingToHalt(p.getBuilding().getId())))) {
 //                continue;
 //            }
 //            // 如果存在数据
@@ -140,28 +140,28 @@ public class TestManager {
 //        RestResult result = new RestResult();
 //        Integer count = 0;
 //        // 使用名称 或者全称 1 为全称。 防止没有传参则默认使用 0 也就是名称
-//        boolean isFullName = ZStringUtils.isEquals(vo.getName(), "1");
+//        boolean isFullName = StringUtils.isEquals(vo.getName(), "1");
 //        // 是否传楼宇ID  如果没传则不考虑楼宇
-//        boolean isBuilding = ZStringUtils.isEmpty(vo.getBuildingId());
+//        boolean isBuilding = StringUtils.isEmpty(vo.getBuildingId());
 //        // 获取所有位置
 //        List<TestPosition> positions = robotPositionService.getAllListByOfficeId(vo.getOfficeId());
-//        if (ZCollectionUtils.isEmpty(positions)) {
+//        if (CollectionUtils.isEmpty(positions)) {
 //            result.setData(count);
 //            return result;
 //        }
 //        // 获取所有参数机器人类型的位置
-//        List<TestPosition> collectByRobotModel = positions.stream().filter(a -> ZStringUtils.isEquals(a.getRobotModel(), vo.getRobotModel())).collect(Collectors.toList());
-//        if (ZCollectionUtils.isEmpty(collectByRobotModel)) {
+//        List<TestPosition> collectByRobotModel = positions.stream().filter(a -> StringUtils.isEquals(a.getRobotModel(), vo.getRobotModel())).collect(Collectors.toList());
+//        if (CollectionUtils.isEmpty(collectByRobotModel)) {
 //            result.setData(count);
 //            return result;
 //        }
 //        // 获取所有非参数机器人类型的位置
-//        List<TestPosition> collect = positions.stream().filter(a -> ZStringUtils.isNotEqualsAndNotEmpty(a.getRobotModel(), vo.getRobotModel())).collect(Collectors.toList());
-//        if (ZCollectionUtils.isEmpty(collect)) {
+//        List<TestPosition> collect = positions.stream().filter(a -> StringUtils.isNotEqualsAndNotEmpty(a.getRobotModel(), vo.getRobotModel())).collect(Collectors.toList());
+//        if (CollectionUtils.isEmpty(collect)) {
 //            result.setData(count);
 //            return result;
 //        }
-//        Map<String, TestPosition> maps = ZCollectionUtils.toMap(collect,
+//        Map<String, TestPosition> maps = CollectionUtils.toMap(collect,
 //                a -> isFullName ? a.getFullName() : a.getName(), a -> a, new HashMap<>());
 //
 //        RobotPositionMapping rpm = null;
@@ -172,7 +172,7 @@ public class TestManager {
 //                continue;
 //            }
 //            // 防止不同楼宇名称一样所以效验楼宇
-//            if (ZStringUtils.isNotEqualsAndNotEmpty(OfficeBuildingUtils.buildingToHalt(maps.get(name).getBuilding().getId()), OfficeBuildingUtils.buildingToHalt(vo.getBuildingId()))) {
+//            if (StringUtils.isNotEqualsAndNotEmpty(OfficeBuildingUtils.buildingToHalt(maps.get(name).getBuilding().getId()), OfficeBuildingUtils.buildingToHalt(vo.getBuildingId()))) {
 //                continue;
 //            }
 //            TestPosition robotPosition = maps.get(p.getFullName());
@@ -205,25 +205,25 @@ public class TestManager {
         LOGGER.debug("add main position params:" + vo.toString());
         RestResult result = new RestResult();
         // 使用名称 或者全称 1 为全称。 防止没有传参则默认使用 0 也就是名称
-        boolean isFullName = ZStringUtils.isEquals(vo.getName(), "1");
+        boolean isFullName = StringUtils.isEquals(vo.getName(), "1");
         Integer count = 0;
         // 获取所有位置
         List<TestPosition> positions = robotPositionService.getAllListByOfficeId(vo.getOfficeId());
         LOGGER.debug("add main positions length : " + positions.size());
-        if (ZCollectionUtils.isEmpty(positions)) {
+        if (CollectionUtils.isEmpty(positions)) {
             result.setData(count);
             return result;
         }
         // 获取所有参数机器人类型的位置
-        List<TestPosition> collectByRobotModel = positions.stream().filter(a -> ZStringUtils.isEquals(a.getRobotModel(), vo.getRobotModel())).collect(Collectors.toList());
+        List<TestPosition> collectByRobotModel = positions.stream().filter(a -> StringUtils.isEquals(a.getRobotModel(), vo.getRobotModel())).collect(Collectors.toList());
         List<TestPosition> collectByRobotModel1 = transitionList(collectByRobotModel, isFullName, true);
         // 将 list 转换为 map 方便验证位置全名是否已经生成配置
-        Map<String, TestPosition> maps = ZCollectionUtils.toMap(collectByRobotModel1,
+        Map<String, TestPosition> maps = CollectionUtils.toMap(collectByRobotModel1,
                 a -> isFullName ? a.getFullName() : a.getName(), a -> a, new HashMap<>());
         // 遍历所有位置
         for (TestPosition p : positions) {
             // 如果机器人类型和参数类型一样 则跳过  因为参数类型的位置在上面已经添加了
-            if (ZStringUtils.isEquals(vo.getRobotModel(), p.getRobotModel())) {
+            if (StringUtils.isEquals(vo.getRobotModel(), p.getRobotModel())) {
                 continue;
             }
             // 获取key
@@ -235,14 +235,14 @@ public class TestManager {
                     rp = maps.get(getNameString(name, OfficeBuildingUtils.getBuildingId(p.getBuilding())));
                 }
                 // 楼宇不一样则可以生成配置
-                if (ZStringUtils.isEquals(OfficeBuildingUtils.buildingToHalt(OfficeBuildingUtils.getBuildingId(rp.getBuilding())), OfficeBuildingUtils.buildingToHalt(OfficeBuildingUtils.getBuildingId(p.getBuilding())))) {
+                if (StringUtils.isEquals(OfficeBuildingUtils.buildingToHalt(OfficeBuildingUtils.getBuildingId(rp.getBuilding())), OfficeBuildingUtils.buildingToHalt(OfficeBuildingUtils.getBuildingId(p.getBuilding())))) {
                     continue;
                 }
             }
             collectByRobotModel.add(p);
         }
         RobotMainPosition rmp = null;
-        if (ZCollectionUtils.isNotEmpty(collectByRobotModel)) {
+        if (CollectionUtils.isNotEmpty(collectByRobotModel)) {
             collectByRobotModel = transitionList(collectByRobotModel, isFullName, true);
             // 添加所有参数类型位置总表
             for (TestPosition p : collectByRobotModel) {
@@ -300,7 +300,7 @@ public class TestManager {
         Map<String, TestPosition> map = new HashMap<>();
         for (TestPosition p : list) {
             for (TestPosition i : list) {
-                if (!map.containsKey(i.getId()) && ZStringUtils.isEquals(p.getName(), i.getName()) && ZStringUtils.isNotEqualsAndNotEmpty(p.getId(), i.getId())) {
+                if (!map.containsKey(i.getId()) && StringUtils.isEquals(p.getName(), i.getName()) && StringUtils.isNotEqualsAndNotEmpty(p.getId(), i.getId())) {
                     map.put(p.getId(), p);
                     map.put(i.getId(), i);
                 }
@@ -352,28 +352,28 @@ public class TestManager {
         RestResult result = new RestResult();
         Integer count = 0;
         // 使用名称 或者全称 1 为全称。 防止没有传参则默认使用 0 也就是名称
-        boolean isFullName = ZStringUtils.isEquals(vo.getName(), "1");
+        boolean isFullName = StringUtils.isEquals(vo.getName(), "1");
         // 获取所有位置
         List<TestPosition> positions = robotPositionService.getAllListByOfficeId(vo.getOfficeId());
-        if (ZCollectionUtils.isEmpty(positions)) {
+        if (CollectionUtils.isEmpty(positions)) {
             result.setData(count);
             return result;
         }
         // 获取所有参数机器人类型的位置
-        List<TestPosition> collectByRobotModel = positions.stream().filter(a -> ZStringUtils.isEquals(a.getRobotModel(), vo.getRobotModel())
-                && ZStringUtils.isEquals(OfficeBuildingUtils.buildingToHalt(OfficeBuildingUtils.getBuildingId(a.getBuilding())), OfficeBuildingUtils.buildingToHalt(vo.getBuildingId()))).collect(Collectors.toList());
-        if (ZCollectionUtils.isEmpty(collectByRobotModel)) {
+        List<TestPosition> collectByRobotModel = positions.stream().filter(a -> StringUtils.isEquals(a.getRobotModel(), vo.getRobotModel())
+                && StringUtils.isEquals(OfficeBuildingUtils.buildingToHalt(OfficeBuildingUtils.getBuildingId(a.getBuilding())), OfficeBuildingUtils.buildingToHalt(vo.getBuildingId()))).collect(Collectors.toList());
+        if (CollectionUtils.isEmpty(collectByRobotModel)) {
             result.setData(count);
             return result;
         }
         // 获取所有非参数机器人类型的位置
-        List<TestPosition> collect = positions.stream().filter(a -> ZStringUtils.isNotEqualsAndNotEmpty(a.getRobotModel(), vo.getRobotModel())
-                && ZStringUtils.isEquals(OfficeBuildingUtils.buildingToHalt(OfficeBuildingUtils.getBuildingId(a.getBuilding())), OfficeBuildingUtils.buildingToHalt(vo.getBuildingId()))).collect(Collectors.toList());
-        if (ZCollectionUtils.isEmpty(collect)) {
+        List<TestPosition> collect = positions.stream().filter(a -> StringUtils.isNotEqualsAndNotEmpty(a.getRobotModel(), vo.getRobotModel())
+                && StringUtils.isEquals(OfficeBuildingUtils.buildingToHalt(OfficeBuildingUtils.getBuildingId(a.getBuilding())), OfficeBuildingUtils.buildingToHalt(vo.getBuildingId()))).collect(Collectors.toList());
+        if (CollectionUtils.isEmpty(collect)) {
             result.setData(count);
             return result;
         }
-        Map<String, TestPosition> maps = ZCollectionUtils.toMap(transitionList(collect, isFullName, false),
+        Map<String, TestPosition> maps = CollectionUtils.toMap(transitionList(collect, isFullName, false),
                 a -> isFullName ? a.getFullName() : a.getName(), a -> a, new HashMap<>());
 
         RobotPositionMapping rpm = null;
@@ -416,15 +416,15 @@ public class TestManager {
     }
 
     public List<RobotMainPosition> getMain(String officeId) {
-        return getMainAll().stream().filter(a -> ZStringUtils.isEquals(officeId, a.getOffice().getId())).collect(Collectors.toList());
+        return getMainAll().stream().filter(a -> StringUtils.isEquals(officeId, a.getOffice().getId())).collect(Collectors.toList());
     }
 
     public List<RobotPositionMapping> getMapping(String officeId) {
-        return getMappingAll().stream().filter(a -> ZStringUtils.isEquals(officeId, a.getOffice().getId())).collect(Collectors.toList());
+        return getMappingAll().stream().filter(a -> StringUtils.isEquals(officeId, a.getOffice().getId())).collect(Collectors.toList());
     }
 
     public void addPosition() {
-        if (ZCollectionUtils.isEmpty(robotPositionService.getData())) {
+        if (CollectionUtils.isEmpty(robotPositionService.getData())) {
             robotPositionService.addPosition();
         }
     }
@@ -449,7 +449,7 @@ public class TestManager {
 //        Map<String, TestPosition> map = new HashMap<>();
 //        for (TestPosition p : list) {
 //            for (TestPosition i : list) {
-//                if (!map.containsKey(i.getId()) && ZStringUtils.isEquals(p.getName(), i.getName()) && ZStringUtils.isNotEqualsAndNotEmpty(p.getId(), i.getId())) {
+//                if (!map.containsKey(i.getId()) && StringUtils.isEquals(p.getName(), i.getName()) && StringUtils.isNotEqualsAndNotEmpty(p.getId(), i.getId())) {
 //                    map.put(p.getId(), p);
 //                    map.put(i.getId(), i);
 //                }

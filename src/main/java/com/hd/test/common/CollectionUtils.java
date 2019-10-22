@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-public class ZCollectionUtils {
+public class CollectionUtils {
 
     /**
      * 判断集合为空
