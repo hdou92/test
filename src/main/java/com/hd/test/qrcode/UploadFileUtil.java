@@ -1,6 +1,6 @@
 package com.hd.test.qrcode;
 
-import com.sylan.biss.core.common.rest.RestResult;
+import com.hd.test.entity.RestResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;

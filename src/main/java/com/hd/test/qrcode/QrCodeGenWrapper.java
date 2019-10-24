@@ -19,11 +19,11 @@ import java.util.Map;
  * 二维码生成工具类
  * 可以返回bufferedImage、base64字符串、File
  *
- * @author luojian
  *
  * @date:   2018年7月27日 上午11:33:53
  */
 public class QrCodeGenWrapper {
+
 	public static Builder of(String content) {
         return new Builder().setMsg(content);
     }

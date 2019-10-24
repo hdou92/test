@@ -54,7 +54,7 @@ public class QrCodeOptions {
 
     public enum LogoStyle {
         ROUND,
-        NORMAL;
+        NORMAL
     }
 
 
