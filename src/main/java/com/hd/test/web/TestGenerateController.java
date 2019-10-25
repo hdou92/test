@@ -15,11 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 测试一键生成
+ * eps 公司功能
+ */
 @CrossOrigin
 @RestController
-public class TestController {
+public class TestGenerateController {
 
-    private static final Log LOGGER = LogFactory.getLog(TestController.class);
+    private static final Log LOGGER = LogFactory.getLog(TestGenerateController.class);
 
     @Autowired
     private TestManager testManager;

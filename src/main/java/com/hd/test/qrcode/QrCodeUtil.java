@@ -1,20 +1,26 @@
 package com.hd.test.qrcode;
 
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.WriterException;
+import com.google.zxing.*;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
 import com.google.zxing.qrcode.encoder.Encoder;
 import com.google.zxing.qrcode.encoder.QRCode;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.util.Hashtable;
 
 public class QrCodeUtil {
-	private static final int QUIET_ZONE_SIZE = 4;
 
+    private static final int QUIET_ZONE_SIZE = 4;
+
+    private static final String CHARSET = "utf-8";
 
     /**
      * 对 zxing 的 QRCodeWriter 进行扩展, 解决白边过多的问题
@@ -137,7 +143,6 @@ public class QrCodeUtil {
     }
 
 
-
     /**
      * 根据二维码配置 & 二维码矩阵生成二维码图片
      *
@@ -177,5 +182,27 @@ public class QrCodeUtil {
         }
 
         return qrCode;
+    }
+
+    /**
+     * 解析二维码
+     * @param file
+     * @return
+     * @throws Exception
+     */
+    public static String decode(File file) throws Exception {
+        BufferedImage image;
+        image = ImageIO.read(file);
+        if (image == null) {
+            return null;
+        }
+        BufferedImageLuminanceSource source = new BufferedImageLuminanceSource(image);
+        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+        Result result;
+        Hashtable hints = new Hashtable();
+        hints.put(DecodeHintType.CHARACTER_SET, CHARSET);
+        result = new MultiFormatReader().decode(bitmap, hints);
+        String resultStr = result.getText();
+        return resultStr;
     }
 }

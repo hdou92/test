@@ -4,7 +4,6 @@ import com.google.zxing.WriterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
@@ -14,10 +13,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 
+/**
+ * 测试二维码获取接口
+ */
 @RestController
-public class TestController {
+public class TestQrCodeController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestQrCodeController.class);
 
     private static final String URL = "http://localhost:8888";
 

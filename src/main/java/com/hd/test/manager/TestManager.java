@@ -8,7 +8,7 @@ import com.hd.test.entity.*;
 import com.hd.test.service.RobotMainPositionService;
 import com.hd.test.service.RobotPositionMappingService;
 import com.hd.test.service.RobotPositionService;
-import com.hd.test.web.TestController;
+import com.hd.test.web.TestGenerateController;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
@@ -429,8 +429,8 @@ public class TestManager {
         }
     }
 
-    private static final Log log = LogFactory.getLog(TestController.class);
-    private static final Logger log1 = LoggerFactory.getLogger(TestController.class);
+    private static final Log log = LogFactory.getLog(TestGenerateController.class);
+    private static final Logger log1 = LoggerFactory.getLogger(TestGenerateController.class);
 
     public void testLog() {
         // 测试 logging 日志

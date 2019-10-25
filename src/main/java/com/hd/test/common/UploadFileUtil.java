@@ -1,4 +1,4 @@
-package com.hd.test.qrcode;
+package com.hd.test.common;
 
 import com.hd.test.entity.RestResult;
 import org.slf4j.Logger;

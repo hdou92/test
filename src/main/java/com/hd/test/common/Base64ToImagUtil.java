@@ -1,10 +1,13 @@
-package com.hd.test.qrcode;
+package com.hd.test.common;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import java.io.*;
 
+/**
+ * Base64 和 图片之间的转换
+ */
 public class Base64ToImagUtil {
 
     /**
@@ -15,7 +18,7 @@ public class Base64ToImagUtil {
      * @throws IOException
      */
     public static boolean generateImage(String imgStr, String imgPath)
-    { //对字节数组字符串进行Base64解码并生成图片
+    { //对字节数组字符串进行Base64解码并生成图片？
         if (imgStr == null) //图像数据为空
             return false;
         BASE64Decoder decoder = new BASE64Decoder();

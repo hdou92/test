@@ -83,7 +83,19 @@ public class ObjectUtils {
         return val != null && val > 0;
     }
 
+    /**
+     * 不为null
+     */
+    public static boolean isNotNull(Object val) {
+        return !isNull(val);
+    }
 
+    /**
+     * 为null
+     */
+    public static boolean isNull(Object val) {
+        return val == null;
+    }
 
     /**
      * 如果值为null返回false
