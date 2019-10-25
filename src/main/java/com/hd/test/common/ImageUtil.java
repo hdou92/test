@@ -1,4 +1,6 @@
-package com.hd.test.qrcode;
+package com.hd.test.common;
+
+import com.hd.test.qrcode.QrCodeOptions;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class ImageUtil {
-	/**
+    /**
      * 在图片中间,插入圆角的logo
      *
      * @param qrCode 原图
@@ -50,9 +52,8 @@ public class ImageUtil {
      */
     public static BufferedImage getImageByPath(String path) throws IOException {
         if (path.startsWith("http")) { // 从网络获取logo
-//            return ImageIO.read(new URL(path));
             return ImageIO.read(new URL(path));
-        } else if (path.startsWith("/")) { // 绝对地址获取logo
+        } else if (path.startsWith("/") || path.startsWith("\\") || path.startsWith(":/", 1) || path.startsWith(":\\", 1)) { // 绝对地址获取logo
             return ImageIO.read(new File(path));
         } else { // 从资源目录下获取logo
             return ImageIO.read(ImageUtil.class.getClassLoader().getResourceAsStream(path));
@@ -62,13 +63,13 @@ public class ImageUtil {
 
     /**
      * fixme 边框的计算需要根据最终生成logo图片的大小来定义，这样才不会出现不同的logo原图，导致边框不一致的问题
-     *
+     * <p>
      * 生成圆角图片 & 圆角边框
      *
-     * @param image        原图
+     * @param image     原图
      * @param logoStyle 圆角的角度
-     * @param size         边框的边距
-     * @param color        边框的颜色
+     * @param size      边框的边距
+     * @param color     边框的颜色
      * @return 返回带边框的圆角图
      */
     public static BufferedImage makeRoundBorder(BufferedImage image, QrCodeOptions.LogoStyle logoStyle, int size, Color color) {

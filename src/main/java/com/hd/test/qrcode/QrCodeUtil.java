@@ -8,6 +8,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
 import com.google.zxing.qrcode.encoder.Encoder;
 import com.google.zxing.qrcode.encoder.QRCode;
+import com.hd.test.common.ImageUtil;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
