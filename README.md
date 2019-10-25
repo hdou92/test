@@ -12,7 +12,9 @@ mac : "/Users/houdu/usr/properties/testlog/log4j2_mac.xml"
 
 test Retrofit2 API
 
-test Thread
+test 线程
 
 test 工作项目  一键生成功能测试
+
+test 二维码的生成和解析
 
