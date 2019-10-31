@@ -1,4 +1,4 @@
-package com.hd.test.thread.utils;
+package com.hd.test.atomic.integer;
 
 
 import java.util.concurrent.BlockingQueue;
