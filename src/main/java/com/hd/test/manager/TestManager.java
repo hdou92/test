@@ -434,7 +434,7 @@ public class TestManager {
 
     public void testLog() {
         // 测试 logging 日志
-
+        log1.debug("当前线程 ： " + Thread.currentThread().getName());
         log.debug("这是org.apache.commons.logging一条debug日志！");
         log.info("这是org.apache.commons.logging一条info日志！");
         log.warn("这是org.apache.commons.logging一条warn日志！");
