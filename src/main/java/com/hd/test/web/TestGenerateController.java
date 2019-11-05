@@ -1,6 +1,7 @@
 package com.hd.test.web;
 
 import com.hd.test.common.StringUtils;
+import com.hd.test.config.RedisUtil;
 import com.hd.test.entity.AutoGenerationVO;
 import com.hd.test.entity.RestResult;
 import com.hd.test.entity.RobotMainPosition;
@@ -26,11 +27,15 @@ public class TestGenerateController {
     private static final Log LOGGER = LogFactory.getLog(TestGenerateController.class);
 
     @Autowired
+    private RedisUtil redisUtil;
+
+    @Autowired
     private TestManager testManager;
 
     @RequestMapping("/test")
     public String test() {
         testManager.testLog();
+        LOGGER.debug(redisUtil.get("test"));
         return "123";
     }
 

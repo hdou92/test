@@ -1,2 +1,48 @@
 server:
   port: 8888
+
+#==========================================#
+#============ Database settings============#
+#==========================================#
+ms.db.driverClassName: com.mysql.jdbc.Driver
+ms.db.url: jdbc:mysql://120.59.97.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+ms.db.username: root
+ms.db.password: root123
+ms.db.maxActive: 20
+ms.db.maxIdle: 2
+ms.db.minIdle: 2
+ms.db.maxWait: 1000
+ms.db.initialSize: 2
+ms.db.validationQuery: SELECT 1
+
+#==========================================#
+#============ Mybatis settings ============#
+#==========================================#
+db.mybatis.mapperLocations: classpath:com/hd/test/db/entity/**.xml
+db.mybatis.typeAliasesPackage: com.hd.test.db.entity
+db.mybatis.dbType: mysql
+
+#==========================================#
+#==== redis and rabbitmq settings   =======#
+#==========================================#
+spring:
+  redis:
+    #数据库索引
+    database: 10
+    host: 120.79.95.182
+    port: 6379
+    password: cjxx_pwd_2019
+    jedis:
+      pool:
+        #最大连接数
+        max-active: 200
+        #最大阻塞等待时间(负数表示没限制)
+        max-wait: -1
+        #最大空闲
+        max-idle: 10
+        #最小空闲
+        min-idle: 0
+    #连接超时时间
+    timeout: 10000
+    cache:
+      clusterNodes: 120.79.95.182:6379

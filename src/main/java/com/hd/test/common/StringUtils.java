@@ -1,5 +1,7 @@
 package com.hd.test.common;
 
+import java.util.UUID;
+
 public class StringUtils {
 
     /**
@@ -196,5 +198,55 @@ public class StringUtils {
      */
     public static boolean isWhiteSpace(String value) {
         return value == null || value.trim().isEmpty();
+    }
+
+    /**
+     * 异常信息转成字符串
+     */
+    public static String exceptionToString(Exception ex) {
+        return throwableToString(ex, false);
+    }
+
+    /**
+     * 异常信息转成字符串
+     */
+    public static String throwableToString(Throwable ex, boolean filterNull) {
+        String msg = ex.getMessage();
+        if (filterNull && isEmpty(msg)) {
+            return "";
+        }
+
+        StackTraceElement[] stackTrace = ex.getStackTrace();
+        if (stackTrace != null && stackTrace.length > 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(ex.getClass() + ": " + msg);
+            sb.append("\r\n\tat ");
+            boolean split = false;
+            for (StackTraceElement st : stackTrace) {
+                if (split) {
+                    sb.append("\r\n\tat ");
+                } else {
+                    split = true;
+                }
+                sb.append(st.toString());
+            }
+            return sb.toString();
+        }
+        return "exception: " + msg;
+    }
+
+    public static String getUUID() {
+        return UUID.randomUUID().toString();
+    }
+
+    /**
+     * @param trimLine 中间无-分割
+     */
+    public static String getUUID(boolean trimLine) {
+        if (trimLine) {
+            return UUID.randomUUID().toString().replaceAll("-", "");
+        } else {
+            return UUID.randomUUID().toString();
+        }
     }
 }
