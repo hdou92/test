@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class TestMethod {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         // 无参构造函数
         AtomicBoolean integer = new AtomicBoolean();
 
