@@ -134,11 +134,11 @@
         <dependency>
             <!--<groupId>com.c3p0</groupId>-->
             <!--<artifactId>c3p0</artifactId>-->
-            <!--<version>0.9.5.2</version>-->
+            <!--<version>0.9.5.4</version>-->
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
             <!--<version>0.9.1.2</version>-->
-            <version>0.9.5.2</version>
+            <version>0.9.5.4</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
