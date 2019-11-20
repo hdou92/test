@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.FileNotFoundException;
 
+//@MapperScan("com.hd.test.db.dao")
 @SpringBootApplication
 public class TestApplication {
 

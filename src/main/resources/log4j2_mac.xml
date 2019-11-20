@@ -21,7 +21,7 @@
             <PatternLayout charset="UTF-8" pattern="${sys:CONSOLE_LOG_PATTERN}"/>
         </console>
         <RollingFile name="RollingFileDebug" fileName="/User/houdu/usr/log/debug/debug.log"
-                     filePattern="/usr/log/debug/bak/debug-%d{yyyy-MM-dd}-%i.log">
+                     filePattern="/User/houdu/usr/log/debug/bak/debug-%d{yyyy-MM-dd}-%i.log">
             <!--只输出debug类型的日志-->
             <Filters>
                 <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>

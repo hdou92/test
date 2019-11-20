@@ -10,6 +10,8 @@ public class DBProperties {
     private String url;
     private String username;
     private String password;
+    private String configPath;
+    private String packagePath;
     private int maxActive = 20;
     private int maxIdle = 2;
     private int minIdle = 2;
@@ -97,13 +99,31 @@ public class DBProperties {
         this.validationQuery = validationQuery;
     }
 
+    public String getConfigPath() {
+        return configPath;
+    }
+
+    public void setConfigPath(String configPath) {
+        this.configPath = configPath;
+    }
+
+    public String getPackagePath() {
+        return packagePath;
+    }
+
+    public void setPackagePath(String packagePath) {
+        this.packagePath = packagePath;
+    }
+
     @Override
     public String toString() {
-        return "DBPropertyConfig{" +
+        return "DBProperties{" +
                 "driverClassName='" + driverClassName + '\'' +
                 ", url='" + url + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", configPath='" + configPath + '\'' +
+                ", packagePath='" + packagePath + '\'' +
                 ", maxActive=" + maxActive +
                 ", maxIdle=" + maxIdle +
                 ", minIdle=" + minIdle +

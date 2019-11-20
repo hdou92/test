@@ -4,23 +4,34 @@ server:
 #==========================================#
 #============ Database settings============#
 #==========================================#
-ms.db.driverClassName: com.mysql.jdbc.Driver
-ms.db.url: jdbc:mysql://120.59.97.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-ms.db.username: root
-ms.db.password: root123
+#ms.db.driverClassName: com.mysql.jdbc.Driver
+ms.db.driverClassName: com.mysql.cj.jdbc.Driver
+#ms.db.url: jdbc:mysql://120.59.97.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+ms.db.url: jdbc:mysql://192.168.197.128:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#ms.db.username: root
+ms.db.username: admin
+#ms.db.password: root123
+ms.db.password: 123456
 ms.db.maxActive: 20
 ms.db.maxIdle: 2
 ms.db.minIdle: 2
 ms.db.maxWait: 1000
 ms.db.initialSize: 2
 ms.db.validationQuery: SELECT 1
+ms.db.packagePath: com.hd.test.db.dao
+ms.db.configPath: classpath:com/hd/test/db/dao/**.xml
 
 #==========================================#
 #============ Mybatis settings ============#
 #==========================================#
-db.mybatis.mapperLocations: classpath:com/hd/test/db/entity/**.xml
-db.mybatis.typeAliasesPackage: com.hd.test.db.entity
-db.mybatis.dbType: mysql
+#db.mybatis.mapperLocations: classpath:com/hd/test/db/**.xml
+#db.mybatis.typeAliasesPackage: com.hd.test.db
+#db.mybatis.dbType: mysql
+#mybatis.mapper-locations: classpath:com/hd/test/db/dao/**.xml
+mybatis:
+  mapper-locations: classpath:com/hd/test/db/dao/**.xml
+  type-aliases-package: com.hd.test.db.dao
+
 
 #==========================================#
 #==== redis and rabbitmq settings   =======#
@@ -46,3 +57,13 @@ spring:
     timeout: 10000
     cache:
       clusterNodes: 120.79.95.182:6379
+# DataSource Config MyBatis Plus
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    schema: classpath:db/schema-h2.sql
+#    data: classpath:db/data-h2.sql
+#    url: jdbc:h2:mem:test
+##    url: jdbc:mysql://120.59.97.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#    username: root
+##    password: root123
+#    password: test
