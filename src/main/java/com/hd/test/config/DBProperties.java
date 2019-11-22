@@ -2,9 +2,11 @@ package com.hd.test.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ConfigurationProperties(prefix = "ms.db", ignoreUnknownFields = false)
+@PropertySource(value="test.yml")
 public class DBProperties {
     private String driverClassName = "com.mysql.jdbc.Driver";
     private String url;

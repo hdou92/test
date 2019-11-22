@@ -1,6 +1,7 @@
 package com.hd.test;
 
 import com.hd.test.common.Log4jUtils;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.FileNotFoundException;
 
-//@MapperScan("com.hd.test.db.dao")
+@MapperScan("com.hd.test.db.dao")
 @SpringBootApplication
 public class TestApplication {
 

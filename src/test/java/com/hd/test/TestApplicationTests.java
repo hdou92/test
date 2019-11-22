@@ -1,5 +1,6 @@
 package com.hd.test;
 
+import com.hd.test.db.entity.User;
 import com.hd.test.db.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,8 +19,8 @@ public class TestApplicationTests {
     private UserService userService;
     @Test
     public void contextLoads() {
-        Map<String, Object> map = userService.myMapper();
-        System.out.println(map);
+        User user = userService.queryUser();
+        System.out.println(user);
     }
 
 }

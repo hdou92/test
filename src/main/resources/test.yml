@@ -18,8 +18,8 @@ ms.db.minIdle: 2
 ms.db.maxWait: 1000
 ms.db.initialSize: 2
 ms.db.validationQuery: SELECT 1
-ms.db.packagePath: com.hd.test.db.dao
-ms.db.configPath: classpath:com/hd/test/db/dao/**.xml
+#ms.db.packagePath: com.hd.test.db.dao
+#ms.db.configPath: classpath:com/hd/test/db/dao/**.xml
 
 #==========================================#
 #============ Mybatis settings ============#
@@ -28,7 +28,7 @@ ms.db.configPath: classpath:com/hd/test/db/dao/**.xml
 #db.mybatis.typeAliasesPackage: com.hd.test.db
 #db.mybatis.dbType: mysql
 #mybatis.mapper-locations: classpath:com/hd/test/db/dao/**.xml
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:com/hd/test/db/dao/**.xml
   type-aliases-package: com.hd.test.db.dao
 

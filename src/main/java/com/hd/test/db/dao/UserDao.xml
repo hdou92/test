@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 该配置命名空间 -->
-<mapper namespace="com.hd.test.db.dao.UserMapper">
+<mapper namespace="com.hd.test.db.dao.UserDao">
 
     <select id="queryUser" resultType="com.hd.test.db.entity.User" parameterType="java.lang.String">
         SELECT
@@ -9,7 +9,7 @@
           NAME
         FROM
           user
-        WHERE ID = #{USER_ID}
+        WHERE ID = #{id}
     </select>
 
 </mapper>

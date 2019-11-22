@@ -7,12 +7,14 @@ import com.hd.test.entity.RestResult;
 import com.hd.test.entity.RobotMainPosition;
 import com.hd.test.entity.RobotPositionMapping;
 import com.hd.test.manager.TestManager;
+import io.swagger.annotations.Api;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ import java.util.List;
  */
 @CrossOrigin
 @RestController
+@ApiIgnore
 public class TestGenerateController {
 
     private static final Log LOGGER = LogFactory.getLog(TestGenerateController.class);
