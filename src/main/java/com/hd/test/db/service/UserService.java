@@ -49,4 +49,8 @@ public class UserService {
     public IPage<User> selectPage(Page<User> page) {
         return userMapper.selectPage(page,null);
     }
+
+    public boolean install(User user) {
+        return userMapper.insert(user) > 0;
+    }
 }

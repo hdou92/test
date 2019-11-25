@@ -1,6 +1,11 @@
 package com.hd.test.config;
 
+import com.baomidou.mybatisplus.core.MybatisConfiguration;
+import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,6 +16,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * mysql 连接配置
@@ -38,17 +45,17 @@ public class DBConfig {
         return dataSource;
     }
     @Bean
-    public SqlSessionFactoryBean createSqlSessionFactory(DataSource dataSource) throws IOException {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+    public MybatisSqlSessionFactoryBean createSqlSessionFactory(DataSource dataSource) throws IOException {
+        MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
         // 设置 mapper 对应的 XML 文件的路径
 //        sqlSessionFactoryBean.setMapperLocations(resolver.getResources(config.getConfigPath()));
         // 设置数据源
-        sqlSessionFactoryBean.setDataSource(dataSource);
+        mybatisSqlSessionFactoryBean.setDataSource(dataSource);
         // 设置 mapper 接口所在的包
 //        sqlSessionFactoryBean.setTypeAliasesPackage(config.getPackagePath());
-        return sqlSessionFactoryBean;
+        return mybatisSqlSessionFactoryBean;
     }
 
 }

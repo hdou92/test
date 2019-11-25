@@ -10,14 +10,14 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @Api(description = "* MyBatisPlus测试控制器", value = "用户服务")
+@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MybatisPlusController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MybatisPlusController.class);
@@ -26,7 +26,7 @@ public class MybatisPlusController {
     private UserService userService;
 
     @RequestMapping(value = "/testDB", method = RequestMethod.GET)
-    @ApiOperation(value = "* 获取所有数据 - mybatis API")
+    @ApiOperation(value = "* 获取所有数据 - mybatis plus API")
     public User queryUser() {
         LOGGER.debug("----- select all form mybatis method test ------");
         User user = userService.queryUser();
@@ -43,9 +43,9 @@ public class MybatisPlusController {
         return user;
     }
 
-    @RequestMapping(value = "/deleteById", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.GET)
     @ApiOperation(value = "* 根据ID删除用户 - mybatis plus")
-    public boolean deleteById(String id) {
+    public boolean deleteById(@PathVariable() String id) {
         LOGGER.debug("----- delete by id method test ------");
         boolean b = userService.deleteById(id);
         LOGGER.debug(JsonUtils.toJsonEx(b));
@@ -54,7 +54,7 @@ public class MybatisPlusController {
 
     @RequestMapping(value = "/select", method = RequestMethod.POST)
     @ApiOperation(value = "* 根据条件获取用户集合 - mybatis plus")
-    public List<User> select(User user) {
+    public List<User> select(@RequestBody User user) {
         LOGGER.debug("----- select by user method test ------");
         List<User> users = userService.select(user);
         LOGGER.debug(JsonUtils.toJsonEx(users));
@@ -70,9 +70,9 @@ public class MybatisPlusController {
         return users;
     }
 
-    @RequestMapping(value = "/selectById", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectById/{id}", method = RequestMethod.GET)
     @ApiOperation(value = "* 根据ID获取用户 - mybatis plus")
-    public User selectById(String id) {
+    public User selectById(@PathVariable String id) {
         LOGGER.debug("----- select by id method test ------");
         User user = userService.selectById(id);
         LOGGER.debug(JsonUtils.toJsonEx(user));
@@ -81,11 +81,19 @@ public class MybatisPlusController {
 
     @RequestMapping(value = "/selectPage", method = RequestMethod.POST)
     @ApiOperation(value = "* 分页获取所有用户 - mybatis plus")
-    public IPage<User> selectPage(Page<User> page) {
+    public IPage<User> selectPage(@RequestBody Page<User> page) {
         LOGGER.debug("----- select page method test ------");
         IPage<User> iPage = userService.selectPage(page);
         LOGGER.debug(JsonUtils.toJsonEx(iPage));
         return iPage;
+    }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ApiOperation(value = "* 新增用户 - mybatis plus")
+    public boolean install(@RequestBody User user) {
+        LOGGER.debug("----- install user method test ------");
+        boolean b = userService.install(user);
+        LOGGER.debug(JsonUtils.toJsonEx(b));
+        return b;
     }
 }
