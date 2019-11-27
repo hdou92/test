@@ -45,7 +45,7 @@ public class DBConfig {
         return dataSource;
     }
     @Bean
-    public MybatisSqlSessionFactoryBean createSqlSessionFactory(DataSource dataSource) throws IOException {
+    public MybatisSqlSessionFactoryBean createSqlSessionFactory(DataSource dataSource,PaginationInterceptor paginationInterceptor) throws IOException {
         MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
@@ -53,9 +53,20 @@ public class DBConfig {
 //        sqlSessionFactoryBean.setMapperLocations(resolver.getResources(config.getConfigPath()));
         // 设置数据源
         mybatisSqlSessionFactoryBean.setDataSource(dataSource);
+        // 设置 MyBatis-Plus 分页插件
+//        Interceptor[] plugins = {paginationInterceptor};
+        mybatisSqlSessionFactoryBean.setPlugins(paginationInterceptor);
         // 设置 mapper 接口所在的包
 //        sqlSessionFactoryBean.setTypeAliasesPackage(config.getPackagePath());
         return mybatisSqlSessionFactoryBean;
+    }
+
+    /**
+     * 分页插件
+     */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor().setDialectType("mysql");
     }
 
 }

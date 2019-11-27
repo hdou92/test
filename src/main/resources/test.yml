@@ -4,14 +4,15 @@ server:
 #==========================================#
 #============ Database settings============#
 #==========================================#
-#ms.db.driverClassName: com.mysql.jdbc.Driver
 ms.db.driverClassName: com.mysql.cj.jdbc.Driver
-#ms.db.url: jdbc:mysql://120.59.97.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-ms.db.url: jdbc:mysql://192.168.197.128:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-#ms.db.username: root
-ms.db.username: admin
-#ms.db.password: root123
-ms.db.password: 123456
+# 阿里云数据库
+ms.db.url: jdbc:mysql://120.79.95.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+ms.db.username: root
+ms.db.password: admin1234
+# JVM 本地虚拟机
+#ms.db.url: jdbc:mysql://192.168.197.128:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#ms.db.username: admin
+#ms.db.password: 123456
 ms.db.maxActive: 20
 ms.db.maxIdle: 2
 ms.db.minIdle: 2

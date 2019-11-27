@@ -2,11 +2,13 @@ package com.hd.test.web;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hd.test.common.JsonUtils;
 import com.hd.test.db.entity.User;
 import com.hd.test.db.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import jdk.nashorn.internal.ir.LexicalContextNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,9 +83,10 @@ public class MybatisPlusController {
 
     @RequestMapping(value = "/selectPage", method = RequestMethod.POST)
     @ApiOperation(value = "* 分页获取所有用户 - mybatis plus")
-    public IPage<User> selectPage(@RequestBody Page<User> page) {
+    public IPage<User> selectPage(@RequestParam(required = false) Integer pageNo,
+                                  @RequestParam(required = false) Integer pageSize) {
         LOGGER.debug("----- select page method test ------");
-        IPage<User> iPage = userService.selectPage(page);
+        IPage<User> iPage = userService.selectPage(new Page<>(pageNo, pageSize));
         LOGGER.debug(JsonUtils.toJsonEx(iPage));
         return iPage;
     }
