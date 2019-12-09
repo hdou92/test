@@ -249,4 +249,25 @@ public class StringUtils {
             return UUID.randomUUID().toString();
         }
     }
+
+    /**
+     * 依据驼峰原则格式化属性或者类名称，名称转换为小写，并且在驼峰处前一位插入下划线(不包括首位字符)(就是会将：UserName解析为：user_name)
+     *
+     * @param name
+     * @return
+     */
+    public static String formatHumpToUnderline(String name) {
+        CheckUtils.checkNotEmpty(name, "name");
+        StringBuilder sb = new StringBuilder();
+//        sb.deleteByWhere(0, sb.length());
+        sb.append(Character.toLowerCase(name.charAt(0)));
+        for (int i = 1; i < name.length(); i++) {
+            if (Character.isUpperCase(name.charAt(i))) {
+                sb.append("_");
+            }
+            sb.append(Character.toLowerCase(name.charAt(i)));
+        }
+        return sb.toString();
+    }
+
 }
