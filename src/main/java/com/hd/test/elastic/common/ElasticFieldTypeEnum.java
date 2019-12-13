@@ -26,7 +26,8 @@ public enum ElasticFieldTypeEnum implements EnumValue<String> {
     SHORT("short"),
     LONG("long"),
     FLOAT("float"),
-    BOOLEAN("boolean"),;
+    BOOLEAN("boolean"),
+    ARRAY("array");
 
     ElasticFieldTypeEnum(String val) {
         this.val = val;

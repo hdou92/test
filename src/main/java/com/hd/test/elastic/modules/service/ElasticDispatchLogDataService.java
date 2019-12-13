@@ -1,12 +1,12 @@
-package com.hd.test.elastic.modules.device.service;
+package com.hd.test.elastic.modules.service;
 
 import com.hd.test.common.DateUtils;
 import com.hd.test.common.StringUtils;
 import com.hd.test.elastic.common.ElasticPageInfo;
 import com.hd.test.elastic.config.ElasticIndexConsts;
 import com.hd.test.elastic.manager.ElasticManager;
-import com.hd.test.elastic.modules.device.entity.ElasticDispatchLogData;
-import com.hd.test.elastic.modules.device.model.ElasticDispatchLogDataPageQuery;
+import com.hd.test.elastic.modules.entity.ElasticDispatchLogData;
+import com.hd.test.elastic.modules.model.ElasticDispatchLogDataPageQuery;
 import com.hd.test.elastic.service.ElasticServiceBase;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;

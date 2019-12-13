@@ -1,4 +1,4 @@
-package com.hd.test.elastic.modules.device.entity;
+package com.hd.test.elastic.modules.entity;
 
 public interface ElasticModel {
 

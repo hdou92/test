@@ -1,11 +1,11 @@
-package com.hd.test.elastic.modules.device.service;
+package com.hd.test.elastic.modules.service;
 
 import com.hd.test.common.DateUtils;
 import com.hd.test.common.StringUtils;
 import com.hd.test.elastic.config.ElasticIndexConsts;
 import com.hd.test.elastic.manager.ElasticManager;
-import com.hd.test.elastic.modules.device.entity.ElasticSourceRobotStatus;
-import com.hd.test.elastic.modules.device.model.ElasticRobotStatusPageQuery;
+import com.hd.test.elastic.modules.entity.ElasticSourceRobotStatus;
+import com.hd.test.elastic.modules.model.ElasticRobotStatusPageQuery;
 import com.hd.test.elastic.service.ElasticServiceBase;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;

@@ -1,9 +1,9 @@
-package com.hd.test.elastic.modules.device.model;
+package com.hd.test.elastic.modules.model;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-public class ElasticRobotStatusPageQuery extends PageQuery {
+public class ElasticRobotPushMessagePageQuery extends PageQuery {
     @NotNull
     private String officeId;
     @NotNull
@@ -21,15 +21,20 @@ public class ElasticRobotStatusPageQuery extends PageQuery {
      * 结束时间
      */
     private Date endDate;
+    /**
+     * 消息路径
+     */
+    private String path;
+    /**
+     * 消息推送是否成功
+     */
+    private Boolean success;
+    /**
+     * 发送次数
+     */
+    private Integer sendCount;
 
-    public ElasticRobotStatusPageQuery() {
-    }
-
-    public ElasticRobotStatusPageQuery(int pageIndex, int pageSize, String officeId, String robotId, Date day) {
-        super(pageIndex, pageSize);
-        this.officeId = officeId;
-        this.robotId = robotId;
-        this.day = day;
+    public ElasticRobotPushMessagePageQuery() {
     }
 
     public String getOfficeId() {
@@ -56,14 +61,6 @@ public class ElasticRobotStatusPageQuery extends PageQuery {
         this.day = day;
     }
 
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
@@ -72,14 +69,49 @@ public class ElasticRobotStatusPageQuery extends PageQuery {
         this.startDate = startDate;
     }
 
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public Boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Boolean success) {
+        this.success = success;
+    }
+
+    public Integer getSendCount() {
+        return sendCount;
+    }
+
+    public void setSendCount(Integer sendCount) {
+        this.sendCount = sendCount;
+    }
+
     @Override
     public String toString() {
-        return "ElasticRobotStatusPageQuery{" +
+        return "ElasticRobotPushMessagePageQuery{" +
                 "officeId='" + officeId + '\'' +
                 ", robotId='" + robotId + '\'' +
                 ", day=" + day +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
+                ", path='" + path + '\'' +
+                ", success=" + success +
+                ", sendCount=" + sendCount +
                 "} " + super.toString();
     }
 }

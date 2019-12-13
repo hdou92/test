@@ -1,4 +1,4 @@
-package com.hd.test.elastic.modules.device.entity;
+package com.hd.test.elastic.modules.entity;
 
 import com.hd.test.elastic.common.ElasticField;
 import com.hd.test.elastic.common.ElasticFieldTypeEnum;

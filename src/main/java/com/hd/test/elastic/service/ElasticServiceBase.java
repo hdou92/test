@@ -6,7 +6,7 @@ import com.hd.test.elastic.common.ElasticIndexSetting;
 import com.hd.test.elastic.common.ElasticPageInfo;
 import com.hd.test.elastic.common.SettingElasticRestClient;
 import com.hd.test.elastic.manager.ElasticManager;
-import com.hd.test.elastic.modules.device.entity.ElasticModel;
+import com.hd.test.elastic.modules.entity.ElasticModel;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.RangeQueryBuilder;

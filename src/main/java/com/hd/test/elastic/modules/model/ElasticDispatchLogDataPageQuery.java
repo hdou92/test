@@ -1,4 +1,4 @@
-package com.hd.test.elastic.modules.device.model;
+package com.hd.test.elastic.modules.model;
 
 import java.util.Date;
 

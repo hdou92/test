@@ -1,6 +1,6 @@
-package com.hd.test.elastic.modules.device.model;
+package com.hd.test.elastic.modules.model;
 
-import com.hd.test.elastic.modules.device.entity.ElasticRobotPushMessage;
+import com.hd.test.elastic.modules.entity.ElasticRobotPushMessage;
 
 public class RetrySendRobotPushMessageInfo {
     private String documentId;
