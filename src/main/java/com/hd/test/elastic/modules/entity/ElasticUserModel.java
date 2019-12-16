@@ -7,7 +7,7 @@ import io.searchbox.annotations.JestId;
 /**
  * 测试用户模型实体
  */
-public class ElasticTestUserModel implements ElasticModel {
+public class ElasticUserModel implements ElasticModel {
     /**
      * 文档id
      */
@@ -104,7 +104,7 @@ public class ElasticTestUserModel implements ElasticModel {
 
     @Override
     public String toString() {
-        return "ElasticTestUserModel{" +
+        return "ElasticUserModel{" +
                 "documentId='" + documentId + '\'' +
                 ", username='" + username + '\'' +
                 ", age='" + age + '\'' +
