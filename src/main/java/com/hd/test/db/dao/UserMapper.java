@@ -5,4 +5,6 @@ import com.hd.test.db.entity.User;
 
 public interface UserMapper extends BaseMapper<User> {
     User queryUser(String id);
+
+    Long getMysqlTimeStamp();
 }

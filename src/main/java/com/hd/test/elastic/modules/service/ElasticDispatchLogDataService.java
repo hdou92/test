@@ -14,7 +14,7 @@ import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class ElasticDispatchLogDataService extends ElasticServiceBase<ElasticDispatchLogData> {
     public ElasticDispatchLogDataService(ElasticManager elasticManager) {
         super(ElasticIndexConsts.DISPATCH_LOG_DATA_INDEX_NAME, ElasticDispatchLogData.class, elasticManager);

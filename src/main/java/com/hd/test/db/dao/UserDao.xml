@@ -6,10 +6,16 @@
     <select id="queryUser" resultType="com.hd.test.db.entity.User" parameterType="java.lang.String">
         SELECT
           ID,
-          NAME
+          NAME,
+          AGE,
+          EMAIL
         FROM
           user
         WHERE ID = #{id}
+    </select>
+
+    <select id="getMysqlTimeStamp" resultType="java.lang.Long">
+        SELECT UNIX_TIMESTAMP(now())
     </select>
 
 </mapper>

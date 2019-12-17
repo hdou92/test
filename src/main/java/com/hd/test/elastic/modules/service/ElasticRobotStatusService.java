@@ -19,7 +19,7 @@ import java.util.Date;
 /**
  * 机器人状态service
  */
-@Service
+//@Service
 public class ElasticRobotStatusService extends ElasticServiceBase<ElasticRobotStatus> {
     private static final String TIME_NAME = "lastUploadTime";
 

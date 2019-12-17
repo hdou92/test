@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Component
+//@Component
 public class ElasticManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticManager.class);
 

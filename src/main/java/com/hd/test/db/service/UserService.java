@@ -53,4 +53,8 @@ public class UserService {
     public boolean install(User user) {
         return userMapper.insert(user) > 0;
     }
+
+    public Long getMysqlTimeStamp(){
+        return userMapper.getMysqlTimeStamp();
+    }
 }

@@ -8,4 +8,6 @@ public interface UserDao {
 
     User queryUser(String id);
 
+    Long getMysqlTimeStamp();
+
 }

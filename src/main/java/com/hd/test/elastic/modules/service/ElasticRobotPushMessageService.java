@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Map;
 
-@Service
+//@Service
 public class ElasticRobotPushMessageService extends ElasticServiceBase<ElasticRobotPushMessage> {
     private static final String TIME_NAME = "timestamp";
 

@@ -99,4 +99,15 @@ public class MybatisPlusController {
         LOGGER.debug(JsonUtils.toJsonEx(b));
         return b;
     }
+
+    @RequestMapping(value = "/getMysqlTime", method = RequestMethod.GET)
+    @ApiOperation(value = "* 获取mysql时间 - mybatis plus")
+    public Long getMysqlTimeStamp() {
+        LOGGER.debug("----- test getMysqlTimeStamp ------");
+        Long l = userService.getMysqlTimeStamp();
+        LOGGER.debug(JsonUtils.toJsonEx(l));
+        return l;
+    }
+
+
 }

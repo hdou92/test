@@ -12,4 +12,8 @@
         WHERE ID = #{USER_ID}
     </select>
 
+    <select id="getMysqlTimeStamp" resultType="java.lang.Long">
+        SELECT UNIX_TIMESTAMP(now())
+    </select>
+
 </mapper>
