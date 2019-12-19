@@ -25,7 +25,6 @@ public class Log4jUtils {
         //method2 System.getProperty
         String osName = System.getProperty("os.name");
 //        String fullPath = config + "\\log4j2.xml";
-        LOGGER.debug(" OS : " + osName);
         String fullPath = StringUtils.isEquals(OS_NAME,osName) ? MAC_LOG_NAME : WIN_LOG_NAME;
 
         //这种方式在spring boot不可用

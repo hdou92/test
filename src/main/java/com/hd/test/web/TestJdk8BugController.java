@@ -2,6 +2,7 @@ package com.hd.test.web;
 
 import com.hd.test.common.CollectionUtils;
 import com.hd.test.common.ObjectUtils;
+import com.hd.test.entity.RestResult;
 import com.hd.test.manager.Jdk8TestManager;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -75,5 +76,15 @@ public class TestJdk8BugController {
             }
         });
         return CollectionUtils.isEmpty(list) ? 0 : list.size();
+    }
+
+    @RequestMapping(value = "getOS", method = RequestMethod.GET)
+    @ApiOperation(value = "* 获取OS")
+    public RestResult getOS() {
+        LOGGER.debug("获取系统信息！");
+        String osName = System.getProperty("os.name");
+        RestResult result = new RestResult();
+        result.setData(osName);
+        return result;
     }
 }
