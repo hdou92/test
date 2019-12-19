@@ -10,6 +10,8 @@ public class Log4jUtils {
 
     private static final String WIN_LOG_NAME = "/usr/properties/testlog/log4j2_windows.xml";
 
+    private static final String LINUX_LOG_NAME = "classpath:log4j2_linux.xml";
+
     /**
      * 加载项目根目录下的log4j2.xml文件
      * 应用程序打包后，xml可以与Jar包放到同一个目录下，方便用户修改日志等级
