@@ -9,11 +9,15 @@ public class Log4jUtils {
 
     private static Log LOGGER = LogFactory.getLog(Log4jUtils.class);
 
-    private static final String OS_NAME = "Mac OS X";
+    private static final String OS_NAME_MAC = "Mac OS X";
+
+    private static final String OS_NAME_LINUX = "Linux";
 
     private static final String MAC_LOG_NAME = "/Users/houdu/usr/properties/testlog/log4j2_mac.xml";
 
     private static final String WIN_LOG_NAME = "/usr/properties/testlog/log4j2_windows.xml";
+
+//    private static final String LINUX_LOG_NAME = "/usr/properties/testlog/log4j2_windows.xml";
 
     private static final String LINUX_LOG_NAME = "classpath:log4j2_linux.xml";
 
@@ -25,7 +29,7 @@ public class Log4jUtils {
         //method2 System.getProperty
         String osName = System.getProperty("os.name");
 //        String fullPath = config + "\\log4j2.xml";
-        String fullPath = StringUtils.isEquals(OS_NAME,osName) ? MAC_LOG_NAME : WIN_LOG_NAME;
+        String fullPath = StringUtils.isEquals(OS_NAME_MAC, osName) ? MAC_LOG_NAME : StringUtils.isEquals(OS_NAME_LINUX, osName) ? LINUX_LOG_NAME : WIN_LOG_NAME;
 
         //这种方式在spring boot不可用
 //        ConfigurationSource source;
