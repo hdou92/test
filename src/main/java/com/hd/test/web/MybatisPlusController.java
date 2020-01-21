@@ -41,7 +41,8 @@ public class MybatisPlusController {
     public User queryUser1() {
         LOGGER.debug("----- select all form mybatis plus method test ------");
         User user = userService.queryUser1();
-        LOGGER.debug(JsonUtils.toJsonEx(user));
+//        LOGGER.debug(JsonUtils.toJsonEx(user));
+        LOGGER.debug(user.toString());
         return user;
     }
 
@@ -108,6 +109,13 @@ public class MybatisPlusController {
         LOGGER.debug(JsonUtils.toJsonEx(l));
         return l;
     }
+
+//    @RequestMapping(value = "/updateByName", method = RequestMethod.GET)
+//    @ApiOperation(value = "* 根据name修改email,验证主从 - mybatis plus")
+//    public void updateByName() {
+//        LOGGER.debug("----- test updateByName ------");
+//        userService.updateByName();
+//    }
 
 
 }

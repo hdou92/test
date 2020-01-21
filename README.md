@@ -20,3 +20,4 @@ test 二维码的生成和解析
 
 test es
 
+mycat 读写分离

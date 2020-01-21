@@ -5,15 +5,21 @@
 
     <select id="queryUser" resultType="com.hd.test.db.entity.User" parameterType="java.lang.String">
         SELECT
-          ID,
-          NAME
+          id,
+          name,
+          age,
+          email
         FROM
           user
-        WHERE ID = #{USER_ID}
+        WHERE id = #{id}
     </select>
 
     <select id="getMysqlTimeStamp" resultType="java.lang.Long">
         SELECT UNIX_TIMESTAMP(now())
     </select>
+
+    <!--<update id="updateByName">-->
+        <!--update from user set email = '修改主数据' where name = 'slave'-->
+    <!--</update>-->
 
 </mapper>

@@ -57,4 +57,7 @@ public class UserService {
     public Long getMysqlTimeStamp(){
         return userMapper.getMysqlTimeStamp();
     }
+//    public void updateByName(){
+//        userMapper.updateByName();
+//    }
 }

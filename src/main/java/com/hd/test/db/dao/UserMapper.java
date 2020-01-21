@@ -7,4 +7,6 @@ public interface UserMapper extends BaseMapper<User> {
     User queryUser(String id);
 
     Long getMysqlTimeStamp();
+
+//    void updateByName();
 }

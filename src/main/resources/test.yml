@@ -5,9 +5,13 @@ server.port: 8888
 #==========================================#
 ms.db.driverClassName: com.mysql.cj.jdbc.Driver
 # 阿里云数据库
-ms.db.url: jdbc:mysql://120.79.95.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-ms.db.username: root
-ms.db.password: admin1234
+#ms.db.url: jdbc:mysql://120.79.95.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#ms.db.username: root
+#ms.db.password: admin1234
+# mycat 数据库
+ms.db.url: jdbc:mysql://127.0.0.1:8066/TESTDB?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+ms.db.username: mycat
+ms.db.password: 123456
 # JVM 本地虚拟机
 #ms.db.url: jdbc:mysql://192.168.197.128:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
 #ms.db.username: admin
@@ -69,6 +73,8 @@ spring:
 #    password: test
 
 
-elastic.config.serverUris: http://120.79.95.182:9200
-elastic.config.username: admin
-elastic.config.password: es123456
+elastic:
+  config:
+    serverUris: http://120.79.95.182:9200
+    username: admin
+    password: es123456

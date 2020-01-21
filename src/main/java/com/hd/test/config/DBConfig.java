@@ -1,12 +1,8 @@
 package com.hd.test.config;
 
-import com.baomidou.mybatisplus.core.MybatisConfiguration;
-import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import org.apache.ibatis.plugin.Interceptor;
-import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -16,8 +12,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * mysql 连接配置
@@ -31,7 +25,7 @@ public class DBConfig {
     @Bean(name = "dataSource")
     @ConfigurationProperties(prefix = "c3p0")
     public ComboPooledDataSource dataSource() throws PropertyVetoException {
-        ComboPooledDataSource  dataSource = new ComboPooledDataSource();
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass(config.getDriverClassName());
         dataSource.setJdbcUrl(config.getUrl());
         dataSource.setUser(config.getUsername());
@@ -44,8 +38,9 @@ public class DBConfig {
         dataSource.setIdleConnectionTestPeriod(60);
         return dataSource;
     }
+
     @Bean
-    public MybatisSqlSessionFactoryBean createSqlSessionFactory(DataSource dataSource,PaginationInterceptor paginationInterceptor) throws IOException {
+    public MybatisSqlSessionFactoryBean createSqlSessionFactory(DataSource dataSource, PaginationInterceptor paginationInterceptor) throws IOException {
         MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
@@ -69,4 +64,4 @@ public class DBConfig {
         return new PaginationInterceptor().setDialectType("mysql");
     }
 
-}
+    }
