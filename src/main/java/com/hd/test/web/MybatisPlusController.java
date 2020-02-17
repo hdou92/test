@@ -69,7 +69,7 @@ public class MybatisPlusController {
     public List<User> selectAll() {
         LOGGER.debug("----- select all form mybatis plus method test ------");
         List<User> users = userService.selectAll();
-        LOGGER.debug(JsonUtils.toJsonEx(users));
+//        LOGGER.debug(JsonUtils.toJsonEx(users));
         return users;
     }
 

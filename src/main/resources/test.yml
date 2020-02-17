@@ -1,5 +1,7 @@
 server.port: 8888
 
+spring.application.name: test-project
+
 #==========================================#
 #============ Database settings============#
 #==========================================#
@@ -41,6 +43,8 @@ mybatis-plus:
 #==== redis and rabbitmq settings   =======#
 #==========================================#
 spring:
+  application:
+    name: test-project
   redis:
     #数据库索引
     database: 10

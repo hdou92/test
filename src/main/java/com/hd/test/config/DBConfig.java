@@ -2,7 +2,12 @@ package com.hd.test.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import com.hd.test.interceptor.MycatInterceptor;
+import com.hd.test.web.MybatisPlusController;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.ibatis.plugin.Interceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -19,8 +24,13 @@ import java.io.IOException;
 @Configuration
 public class DBConfig {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DBConfig.class);
+
     @Autowired
     private DBProperties config;
+
+    @Autowired
+    private MycatInterceptor mycatInterceptor;
 
     @Bean(name = "dataSource")
     @ConfigurationProperties(prefix = "c3p0")
@@ -43,14 +53,17 @@ public class DBConfig {
     public MybatisSqlSessionFactoryBean createSqlSessionFactory(DataSource dataSource, PaginationInterceptor paginationInterceptor) throws IOException {
         MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        System.out.println("设置 mapper 对应的 XML 文件的路径");
+        LOGGER.info("设置 mapper 对应的 XML 文件的路径-----1");
+        LOGGER.debug("设置 mapper 对应的 XML 文件的路径----2");
 
         // 设置 mapper 对应的 XML 文件的路径
 //        sqlSessionFactoryBean.setMapperLocations(resolver.getResources(config.getConfigPath()));
         // 设置数据源
         mybatisSqlSessionFactoryBean.setDataSource(dataSource);
         // 设置 MyBatis-Plus 分页插件
-//        Interceptor[] plugins = {paginationInterceptor};
-        mybatisSqlSessionFactoryBean.setPlugins(paginationInterceptor);
+        Interceptor[] plugins = {paginationInterceptor, mycatInterceptor};
+        mybatisSqlSessionFactoryBean.setPlugins(plugins);
         // 设置 mapper 接口所在的包
 //        sqlSessionFactoryBean.setTypeAliasesPackage(config.getPackagePath());
         return mybatisSqlSessionFactoryBean;
@@ -64,4 +77,4 @@ public class DBConfig {
         return new PaginationInterceptor().setDialectType("mysql");
     }
 
-    }
+}
