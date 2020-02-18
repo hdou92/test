@@ -8,7 +8,9 @@
 
 windows : /usr/properties/testlog/log4j2_windows.xml
 
-mac : "/Users/houdu/usr/properties/testlog/log4j2_mac.xml"
+mac : /Users/houdu/usr/properties/testlog/log4j2_mac.xml
+
+linux : /usr/testLog/log4j2_linux.xml
 
 test Retrofit2 API
 
@@ -18,6 +20,6 @@ test 工作项目  一键生成功能测试
 
 test 二维码的生成和解析
 
-test es
+test es搜索引擎
 
-mycat 读写分离
+myCat 数据库中间件
