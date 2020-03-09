@@ -266,6 +266,34 @@ public class DateUtils {
     }
 
     /**
+     * 判断是否与当前时间相比较已经过期了
+     *
+     * @param timestamp  时间戳
+     * @param expirySpan 过期间隔时间，秒
+     */
+    public static boolean isExpired(Long timestamp, long expirySpan) {
+        return isExpired(timestamp, getTime(), expirySpan);
+    }
+
+    public static long getTime() {
+        return System.currentTimeMillis();  //使用 currentTimeMillis，防止一些意外的错误
+    }
+
+    /**
+     * 判断是否已经过期了
+     *
+     * @param timestamp  时间戳
+     * @param now        当前时间
+     * @param expirySpan 过期间隔时间，秒
+     */
+    public static boolean isExpired(Long timestamp, long now, long expirySpan) {
+        if (timestamp != null) {
+            return (now - timestamp) > (expirySpan * 1000);
+        }
+        return true;
+    }
+
+    /**
      * utc时间转换成本地的时间
      */
     @NotNull

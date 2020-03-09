@@ -1,5 +1,7 @@
 package com.hd.test.common;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 import java.util.UUID;
 
 public class StringUtils {
@@ -268,6 +270,11 @@ public class StringUtils {
             sb.append(Character.toLowerCase(name.charAt(i)));
         }
         return sb.toString();
+    }
+
+    public static String base64Encode(String val, String charsetName) throws UnsupportedEncodingException {
+        byte[] data = val.getBytes(charsetName);
+        return Base64.getEncoder().encodeToString(data);
     }
 
 }
