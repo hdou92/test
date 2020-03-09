@@ -1,6 +1,7 @@
 package com.hd.test.db.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hd.test.db.dao.UserDao;
@@ -13,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class UserService {
     @Autowired
     private UserDao userDao;
@@ -60,4 +61,11 @@ public class UserService {
 //    public void updateByName(){
 //        userMapper.updateByName();
 //    }
+
+    @Transactional
+    public int update(User user){
+        UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<> ();
+        userUpdateWrapper.eq("id", 1);
+        return userMapper.update(user , userUpdateWrapper);
+    }
 }

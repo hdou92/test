@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Api(description = "* MyBatisPlus测试控制器", value = "用户服务")
+@Api(description = "* MyBatisPlus测试控制器", value = "MyBatisPlus测试服务")
 @RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MybatisPlusController {
 

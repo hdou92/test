@@ -17,10 +17,14 @@ public class UserCache {
     }
 
     public User selectById(long id) {
+        return selectById(String.valueOf(id));
+    }
+
+    public User selectById(String id) {
         return caches.get(getKey(id), key -> userService.selectById(String.valueOf(id)));
     }
 
-    private String getKey(long id) {
+    private String getKey(String id) {
         return "user:" + String.valueOf(id);
     }
 
