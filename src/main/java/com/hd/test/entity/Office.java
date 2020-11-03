@@ -1,9 +1,11 @@
 package com.hd.test.entity;
 
+import java.io.Serializable;
+
 /**
  * 测试机构
  */
-public class Office {
+public class Office implements Serializable {
 
     private String id;
 

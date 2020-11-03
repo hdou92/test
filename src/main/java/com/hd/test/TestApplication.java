@@ -9,15 +9,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.io.FileNotFoundException;
+import java.util.Objects;
 
+@EnableScheduling
 @MapperScan("com.hd.test.db.dao")
 @SpringBootApplication()
 public class TestApplication {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Log4jUtils.setLogConfigFilePath();// 加载日志配置
+//        Log4jUtils.setLogConfigFilePath();// 加载日志配置
         SpringApplication.run(TestApplication.class, args);
     }
 
@@ -28,9 +31,11 @@ public class TestApplication {
     public static PropertySourcesPlaceholderConfigurer properties() {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
         YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
-//        yaml.setResources(new FileSystemResource("/usr/properties/test.yml"));//File引入
-		yaml.setResources(new ClassPathResource("test.yml"));//class引入
-        configurer.setProperties(yaml.getObject());
+        //File引入
+//        yaml.setResources(new FileSystemResource("/usr/properties/test.yml"));
+        //class引入
+		yaml.setResources(new ClassPathResource("test.yml"));
+        configurer.setProperties(Objects.requireNonNull(yaml.getObject()));
         return configurer;
     }
 

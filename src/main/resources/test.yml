@@ -7,13 +7,13 @@ spring.application.name: test-project
 #==========================================#
 ms.db.driverClassName: com.mysql.cj.jdbc.Driver
 # 阿里云数据库
-#ms.db.url: jdbc:mysql://120.79.95.182:3306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-#ms.db.username: root
-#ms.db.password: admin1234
+ms.db.url: jdbc:mysql://120.79.95.182:13306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+ms.db.username: root
+ms.db.password: admin1234
 # mycat 数据库
-ms.db.url: jdbc:mysql://127.0.0.1:8066/TESTDB?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-ms.db.username: mycat
-ms.db.password: 123456
+#ms.db.url: jdbc:mysql://127.0.0.1:8066/TESTDB?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#ms.db.username: mycat
+#ms.db.password: 123456
 # JVM 本地虚拟机
 #ms.db.url: jdbc:mysql://192.168.197.128:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
 #ms.db.username: admin
@@ -24,6 +24,8 @@ ms.db.minIdle: 2
 ms.db.maxWait: 1000
 ms.db.initialSize: 2
 ms.db.validationQuery: SELECT 1
+#spring.kafka.bootstrap-servers: 47.110.230.208:9092
+
 #ms.db.packagePath: com.hd.test.db.dao
 #ms.db.configPath: classpath:com/hd/test/db/dao/**.xml
 
@@ -36,8 +38,7 @@ ms.db.validationQuery: SELECT 1
 #mybatis.mapper-locations: classpath:com/hd/test/db/dao/**.xml
 mybatis-plus:
   mapper-locations: classpath:com/hd/test/db/dao/**.xml
-  type-aliases-package: com.hd.test.db.dao
-
+type-aliases-package: com.hd.test.db.dao
 
 #==========================================#
 #==== redis and rabbitmq settings   =======#
@@ -75,6 +76,69 @@ spring:
 #    username: root
 ##    password: root123
 #    password: test
+  kafka:
+    producer:
+      bootstrap-servers: 120.79.95.182:9092
+      # 发生错误后，消息重发的次数。
+      retries: 0
+      #当有多个消息需要被发送到同一个分区时，生产者会把它们放在同一个批次里。该参数指定了一个批次可以使用的内存大小，按照字节数计算。
+      batch-size: 16384
+      # 设置生产者内存缓冲区的大小。
+      buffer-memory: 33554432
+      # 键的序列化方式
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 值的序列化方式
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # acks=0 ： 生产者在成功写入消息之前不会等待任何来自服务器的响应。
+      # acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应。
+      # acks=all ：只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应。
+      acks: 1
+    consumer:
+      # 自动提交的时间间隔 在spring boot 2.X 版本中这里采用的是值的类型为Duration 需要符合特定的格式，如1S,1M,2H,5D
+      auto-commit-interval: 1S
+      # 该属性指定了消费者在读取一个没有偏移量的分区或者偏移量无效的情况下该作何处理：
+      # latest（默认值）在偏移量无效的情况下，消费者将从最新的记录开始读取数据（在消费者启动之后生成的记录）
+      # earliest ：在偏移量无效的情况下，消费者将从起始位置读取分区的记录
+      auto-offset-reset: earliest
+      # 是否自动提交偏移量，默认值是true,为了避免出现重复数据和数据丢失，可以把它设置为false,然后手动提交偏移量
+      enable-auto-commit: false
+      # 键的反序列化方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # 值的反序列化方式
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      # 在侦听器容器中运行的线程数。
+      concurrency: 5
+      #listner负责ack，每调用一次，就立即commit
+      ack-mode: manual_immediate
+      missing-topics-fatal: false
+
+#  kafka:
+#    #生产者的配置，大部分我们可以使用默认的，这里列出几个比较重要的属性
+#    producer:
+#      #每批次发送消息的数量
+#      batch-size: 16
+#      #设置大于0的值将使客户端重新发送任何数据，一旦这些数据发送失败。注意，这些重试与客户端接收到发送错误时的重试没有什么不同。允许重试将潜在的改变数据的顺序，如果这两个消息记录都是发送到同一个partition，则第一个消息失败第二个发送成功，则第二条消息会比第一条消息出现要早。
+#      retries: 0
+#      #producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，producer会阻塞或者抛出异常，以“block.on.buffer.full”来表明。这项设置将和producer能够使用的总内存相关，但并不是一个硬性的限制，因为不是producer使用的所有内存都是用于缓存。一些额外的内存会用于压缩（如果引入压缩机制），同样还有一些用于维护请求。
+#      buffer-memory: 33554432
+#      #key序列化方式
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    #消费者的配置
+#    consumer:
+#      #Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
+#      auto-offset-reset: latest
+#      #是否开启自动提交
+#      enable-auto-commit: true
+#      #自动提交的时间间隔
+#      auto-commit-interval: 100
+#      #key的解码方式
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      #value的解码方式
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      #在/usr/local/etc/kafka/consumer.properties中有配置
+#      group-id: test-consumer-group
 
 
 elastic:
@@ -82,3 +146,19 @@ elastic:
     serverUris: http://120.79.95.182:9200
     username: admin
     password: es123456
+
+
+#xxl:
+#  job:
+#    admin:
+#      addresses: http://127.0.0.1:8080/xxl-job-admin
+#    executor:
+#      appname: xxl-job-executor-test
+#      ### xxl-job executor registry-address: default use address to registry , otherwise use ip:port if address is null
+#      port: 9999
+#      ## xxl-job executor log-path
+#      logpath: /data/applogs/xxl-job/jobhandler
+#      ### xxl-job executor log-retention-days
+#      logretentiondays: 30
+
+

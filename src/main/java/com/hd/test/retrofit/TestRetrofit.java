@@ -19,34 +19,46 @@ public class TestRetrofit {
 
     public static void main(String[] args) {
 
-        String url = "http://localhost:8888";
-
+//        String url = "http://localhost:8888";
+        String url = "http://120.26.140.9/scc-order/";
         Retrofit r = RetrofitUtils.getStringConverterRetrofit(url);
-        TestService testService = r.create(TestService.class);
-        Call<String> info = testService.testString();
-        System.out.println("调用返回值为 String 的无参接口...");
-        executeRest(info);
+        TestOrder testService = r.create(TestOrder.class);
+        Call<Object> restResultCall = testService.pushOrder("{\n" +
+                "    \"appId\": \"TM_PUSH_SCC_ORDER_APP\",\n" +
+                "    \"pushTimestamp\": 1600772243072,\n" +
+                "    \"type\": \"PUSH_NEW_ORDER\",\n" +
+                "    \"shopCode\": \"10035421\",\n" +
+                "    \"data\":\"{123,1213}\"\n" +
+                "}");
+        System.out.println(restResultCall);
 
-        Retrofit r1 = RetrofitUtils.getRetrofit(url);
-        TestService testService1 = r1.create(TestService.class);
-        Call<RestResult<String>> info1 = testService1.testApiString();
-        System.out.println("调用返回值为 RestResult<String> 的无参接口...");
-        executeRest(info1);
 
-        Call<RestResult<Info<Test>>> info2 = testService1.testApiPostObject();
-        System.out.println("调用返回值为 RestResult<Info<Test>> 的无参接口...");
-        executeRest(info2);
-
-        Call<RestResult<Info<Test>>> info3 = testService1.testApiParam("test");
-        System.out.println("调用返回值为 RestResult<Info<Test>> 的有参 'test' 接口...");
-        executeRest(info3);
-
-        Map<String , Object> map = new HashMap<>();
-        map.put("code","test code");
-        map.put("count",123);
-        Call<RestResult<Info<Test>>> info4 = testService1.testParamApi(map);
-        System.out.println("调用返回值为 RestResult<Info<Test>> 的有参 Test.class 接口...");
-        executeRest(info4);
+//        Retrofit r = RetrofitUtils.getStringConverterRetrofit(url);
+//        TestService testService = r.create(TestService.class);
+//        Call<String> info = testService.testString();
+//        System.out.println("调用返回值为 String 的无参接口...");
+//        executeRest(info);
+//
+//        Retrofit r1 = RetrofitUtils.getRetrofit(url);
+//        TestService testService1 = r1.create(TestService.class);
+//        Call<RestResult<String>> info1 = testService1.testApiString();
+//        System.out.println("调用返回值为 RestResult<String> 的无参接口...");
+//        executeRest(info1);
+//
+//        Call<RestResult<Info<Test>>> info2 = testService1.testApiPostObject();
+//        System.out.println("调用返回值为 RestResult<Info<Test>> 的无参接口...");
+//        executeRest(info2);
+//
+//        Call<RestResult<Info<Test>>> info3 = testService1.testApiParam("test");
+//        System.out.println("调用返回值为 RestResult<Info<Test>> 的有参 'test' 接口...");
+//        executeRest(info3);
+//
+//        Map<String , Object> map = new HashMap<>();
+//        map.put("code","test code");
+//        map.put("count",123);
+//        Call<RestResult<Info<Test>>> info4 = testService1.testParamApi(map);
+//        System.out.println("调用返回值为 RestResult<Info<Test>> 的有参 Test.class 接口...");
+//        executeRest(info4);
     }
 
     private static <T> void executeRest(Call<T> call) {
