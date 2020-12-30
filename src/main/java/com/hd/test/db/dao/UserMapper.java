@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hd.test.db.entity.User;
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public interface UserMapper extends BaseMapper<User> {
     User queryUser(String id);
 

@@ -7,9 +7,9 @@ spring.application.name: test-project
 #==========================================#
 ms.db.driverClassName: com.mysql.cj.jdbc.Driver
 # 阿里云数据库
-ms.db.url: jdbc:mysql://120.79.95.182:13306/database_hd?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+ms.db.url: jdbc:mysql://120.79.95.182:13306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
 ms.db.username: root
-ms.db.password: admin1234
+ms.db.password: 123456
 # mycat 数据库
 #ms.db.url: jdbc:mysql://127.0.0.1:8066/TESTDB?useUnicode=true&characterEncoding=UTF-8&useSSL=false
 #ms.db.username: mycat
@@ -29,6 +29,21 @@ ms.db.validationQuery: SELECT 1
 #ms.db.packagePath: com.hd.test.db.dao
 #ms.db.configPath: classpath:com/hd/test/db/dao/**.xml
 
+#SQLServer 连接配置
+sql.db.sqlservice.jdbc-url: jdbc:sqlserver://10.8.45.84:1433;database=AutoWCS_FWD;
+sql.db.sqlservice.username: sa
+sql.db.sqlservice.password: 123456
+sql.db.sqlservice.driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#验证连接的有效性
+sql.db.sqlservice.test-while-idle: true
+#获取连接时候验证，会影响性能
+sql.db.sqlservice.test-on-borrow: true
+sql.db.sqlservice.validation-query: SELECT 1
+#空闲连接回收的时间间隔，与test-while-idle一起使用，设置5分钟
+sql.db.sqlservice.time-between-eviction-runs-millis: 300000
+#连接池空闲连接的有效时间 ，设置30分钟
+sql.db.sqlservice.min-evictable-idle-time-millis: 1800000
+
 #==========================================#
 #============ Mybatis settings ============#
 #==========================================#
@@ -38,7 +53,7 @@ ms.db.validationQuery: SELECT 1
 #mybatis.mapper-locations: classpath:com/hd/test/db/dao/**.xml
 mybatis-plus:
   mapper-locations: classpath:com/hd/test/db/dao/**.xml
-type-aliases-package: com.hd.test.db.dao
+  type-aliases-package: com.hd.test.db.dao
 
 #==========================================#
 #==== redis and rabbitmq settings   =======#

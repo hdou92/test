@@ -164,6 +164,14 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- sql service -->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>4.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/sqljdbc4-4.0.jar</systemPath>
+        </dependency>
 
         <!-- 引入poi不会自动加入另外需要的包 引入poi-ooxml就会自动引入操作xlsx文件所用到的其他包 -->
         <!--        <dependency>-->

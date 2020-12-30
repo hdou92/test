@@ -13,15 +13,22 @@ import com.hd.test.interceptor.MycatInterceptor;
 import com.hd.test.web.MybatisPlusController;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
@@ -39,6 +46,9 @@ public class DBConfig {
 
     @Autowired
     private DBProperties config;
+
+//    @Autowired
+//    private DBSqlServiceProperties sqlServiceProperties;
 
     @Autowired
     private MycatInterceptor mycatInterceptor;
@@ -64,7 +74,6 @@ public class DBConfig {
         dataSource.setMaxOpenPreparedStatements(20); // 类似 maxPoolPreparedStatementPerConnectionSize
         return dataSource;
     }
-
     @Bean
     public ServletRegistrationBean statViewServle(){
         ServletRegistrationBean servletRegistrationBean=new ServletRegistrationBean(new StatViewServlet(),"/druid/*");

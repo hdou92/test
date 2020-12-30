@@ -8,7 +8,8 @@
           id,
           name,
           age,
-          email
+          email,
+          sex
         FROM
           user
         WHERE id = #{id}
@@ -19,7 +20,7 @@
     </select>
 
     <!--<update id="updateByName">-->
-        <!--update from user set email = '修改主数据' where name = 'slave'-->
+    <!--update from user set email = '修改主数据' where name = 'slave'-->
     <!--</update>-->
 
 </mapper>
