@@ -21,6 +21,7 @@ public class TestApplication {
 
     public static void main(String[] args) throws FileNotFoundException {
 //        Log4jUtils.setLogConfigFilePath();// 加载日志配置
+        System.out.println("test");
         SpringApplication.run(TestApplication.class, args);
     }
 
