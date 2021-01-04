@@ -46,11 +46,4 @@ public class UserController {
     public void update(@RequestBody User user){
         userService.update(user);
     }
-
-    public static void main(String[] args) {
-        String str = String.format("%018d", 1);
-        String str1 = String.format("%018d", 1);
-        System.out.println(str);
-        System.out.println(str1);
-    }
 }

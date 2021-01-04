@@ -110,25 +110,12 @@ public class MybatisPlusController {
         return l;
     }
 
-    @RequestMapping(value = "/updateById", method = RequestMethod.GET)
-    @ApiOperation(value = "* 根据name修改email,验证主从 - mybatis plus")
-    public void updateByName(@RequestParam("id") Long id, @RequestParam(value = "name", required = false) String name, @RequestParam(value = "age", required = false) Integer age
-            , @RequestParam(value = "sex", required = false) String sex) {
-        LOGGER.debug("----- test updateByName ------");
-        User user = new User();
-        user.setId(id);
-        user.setName(name);
-        user.setAge(age);
-        user.setSex(sex);
-        userService.update(user);
-    }
-
-    @RequestMapping(value = "/updateByUser", method = RequestMethod.POST)
-    @ApiOperation(value = "* 根据sql更新用户 - mybatis plus")
-    public void updateBySql(@RequestBody User user) {
-        LOGGER.debug("----- test updateBySql ------");
-        userService.update(user);
-    }
+//    @RequestMapping(value = "/updateByName", method = RequestMethod.GET)
+//    @ApiOperation(value = "* 根据name修改email,验证主从 - mybatis plus")
+//    public void updateByName() {
+//        LOGGER.debug("----- test updateByName ------");
+//        userService.updateByName();
+//    }
 
 
 }

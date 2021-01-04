@@ -3,8 +3,15 @@
 <!-- 该配置命名空间 -->
 <mapper namespace="com.hd.test.db.dao.UserDao">
 
-    <select id="queryUser" resultType="com.hd.test.db.entity.User">
-        select 123 as id
+    <select id="queryUser" resultType="com.hd.test.db.entity.User" parameterType="java.lang.String">
+        SELECT
+          ID,
+          NAME,
+          AGE,
+          EMAIL
+        FROM
+          user
+        WHERE ID = #{id}
     </select>
 
     <select id="getMysqlTimeStamp" resultType="java.lang.Long">
